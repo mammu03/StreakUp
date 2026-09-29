@@ -2898,13 +2898,279 @@ nav a.active::after {
   display: none !important;
 }
 
-@media (max-width: 700px) {
-  .profile-details-card {
-    grid-template-columns: 1fr;
+/* ============================= */
+/* PROFILE PAGE */
+/* ============================= */
+
+.profile-page-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px 0 50px;
+}
+
+/* Profile Header */
+
+.profile-page-header {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 30px;
+  margin-bottom: 24px;
+  border-radius: 24px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(115, 77, 240, 0.22),
+      rgba(167, 139, 250, 0.06)
+    );
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.profile-large-avatar {
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  border-radius: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(
+    135deg,
+    #734df0,
+    #a78bfa
+  );
+
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 800;
+
+  box-shadow:
+    0 10px 30px rgba(115, 77, 240, 0.3);
+}
+
+.profile-header-info {
+  min-width: 0;
+}
+
+.profile-page-header h2 {
+  margin: 5px 0;
+  font-size: 30px;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.profile-page-header p:last-child {
+  margin: 5px 0 0;
+  color: #aaa3b8;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+
+/* Profile Stats */
+
+.profile-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.profile-stat-card {
+  position: relative;
+  padding: 22px;
+  min-height: 145px;
+
+  border-radius: 20px;
+  background: #171321;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.12);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.profile-stat-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(167, 139, 250, 0.25);
+}
+
+.profile-stat-card > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+  margin-bottom: 16px;
+
+  border-radius: 13px;
+  background: rgba(115, 77, 240, 0.14);
+
+  font-size: 20px;
+}
+
+.profile-stat-card p {
+  margin: 0 0 7px;
+  color: #8f889d;
+
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.profile-stat-card strong {
+  color: #ffffff;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+
+/* Progress Cards */
+
+.profile-progress-card {
+  padding: 25px;
+  margin-bottom: 20px;
+
+  border-radius: 20px;
+  background: #171321;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.profile-card-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  margin-bottom: 18px;
+}
+
+.profile-card-heading h3 {
+  margin: 4px 0 0;
+  color: #ffffff;
+  font-size: 19px;
+}
+
+.profile-card-heading > strong {
+  color: #a78bfa;
+  font-size: 20px;
+}
+
+
+/* Progress Bar */
+
+.profile-progress-track {
+  width: 100%;
+  height: 9px;
+
+  overflow: hidden;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.profile-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+
+  background: linear-gradient(
+    90deg,
+    #734df0,
+    #a78bfa
+  );
+
+  box-shadow:
+    0 0 14px rgba(115, 77, 240, 0.35);
+
+  transition: width 0.4s ease;
+}
+
+
+/* Streak Milestones */
+
+.profile-milestone {
+  margin-top: 20px;
+}
+
+.profile-milestone-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 9px;
+}
+
+.profile-milestone-info span {
+  color: #ddd7e8;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.profile-milestone-info strong {
+  color: #9f8cff;
+  font-size: 13px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 800px) {
+  .profile-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-page-section {
+    padding: 5px 0 35px;
   }
 
   .profile-page-header {
     padding: 22px;
+    gap: 16px;
+    border-radius: 20px;
+  }
+
+  .profile-large-avatar {
+    width: 68px;
+    height: 68px;
+    border-radius: 19px;
+    font-size: 22px;
+  }
+
+  .profile-page-header h2 {
+    font-size: 23px;
+  }
+
+  .profile-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .profile-stat-card {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .profile-progress-card {
+    padding: 20px;
+  }
+
+  .profile-card-heading h3 {
+    font-size: 17px;
   }
 }
 /* ============================= */
@@ -3014,4 +3280,803 @@ nav a.active::after {
 /* Hide all other sections on Profile page */
 .main.profile-page > section:not(.profile-page-section) {
   display: none !important;
+}
+/* =========================================
+   STREAKUP MOBILE RESPONSIVE UPGRADE
+   ========================================= */
+
+@media (max-width: 650px) {
+
+  /* ---------- PAGE ---------- */
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .app {
+    width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  /* ---------- HEADER ---------- */
+
+  .header {
+    width: 100%;
+    height: auto;
+    min-height: 64px;
+    padding: 10px 16px;
+    gap: 10px;
+  }
+
+  .header > * {
+    min-width: 0;
+  }
+
+  .logo {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .header-right {
+    margin-left: auto;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .theme-btn {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+  }
+
+  .profile {
+    gap: 0;
+    flex-shrink: 0;
+  }
+
+  .profile span {
+    display: none;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+
+  /* ---------- NAVIGATION ---------- */
+
+  nav {
+    display: flex !important;
+    width: 100%;
+    order: 3;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 8px 0 2px;
+    scrollbar-width: none;
+  }
+
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  nav button,
+  nav a {
+    flex: 0 0 auto;
+    min-height: 40px;
+    padding: 9px 13px;
+    border-radius: 10px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  /* ---------- MAIN ---------- */
+
+  .main {
+    width: calc(100% - 28px);
+    max-width: none;
+    padding: 28px 0 50px;
+    margin: 0 auto;
+  }
+
+  .welcome {
+    margin-bottom: 24px;
+  }
+
+  .date {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .welcome h1 {
+    font-size: clamp(28px, 8vw, 36px);
+    line-height: 1.15;
+    letter-spacing: -1px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ---------- STATS ---------- */
+
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .stat-card {
+    width: 100%;
+    min-width: 0;
+    min-height: 100px;
+    padding: 17px;
+    border-radius: 15px;
+  }
+
+  .stat-card .stat-value,
+  .stat-card h2 {
+    font-size: 25px;
+  }
+
+  .stat-card p {
+    font-size: 12px;
+  }
+
+  .stat-icon {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+  }
+
+  /* ---------- SECTION HEADINGS ---------- */
+
+  .section-heading {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .section-heading h2 {
+    font-size: 21px;
+  }
+
+  .section-heading p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* ---------- TASK CARDS ---------- */
+
+  .task-card {
+    width: 100%;
+    min-width: 0;
+    padding: 15px;
+    gap: 10px;
+    border-radius: 14px;
+  }
+
+  .task-card > * {
+    min-width: 0;
+  }
+
+  .task-title {
+    font-size: 14px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .task-meta {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .task-category,
+  .task-difficulty {
+    font-size: 10px;
+  }
+
+  .task-actions {
+    gap: 5px;
+    flex-shrink: 0;
+  }
+
+  .task-card .edit-btn,
+  .task-card .delete-btn,
+  .edit-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* ---------- ADD TASK FORM ---------- */
+
+  .add-task-form {
+    width: 100%;
+    padding: 17px;
+    border-radius: 16px;
+  }
+
+  .add-task-form form {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+
+  .add-task-form input,
+  .add-task-form select,
+  .add-task-form button {
+    width: 100%;
+    min-height: 46px;
+  }
+
+  .form-buttons {
+    grid-column: auto !important;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  /* ---------- ACTIVITY CALENDAR ---------- */
+
+  .activity-card {
+    width: 100%;
+    padding: 16px;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .activity-months-wrapper {
+    width: 100%;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .activity-month {
+    min-width: 220px;
+    flex: 0 0 220px;
+  }
+
+  .activity-month h3 {
+    font-size: 17px;
+    margin-bottom: 12px;
+  }
+
+  .weekday-row,
+  .activity-calendar-grid {
+    grid-template-columns: repeat(7, 25px);
+    gap: 5px;
+  }
+
+  .activity-cell {
+    width: 25px;
+    height: 25px;
+    border-radius: 6px;
+  }
+
+  .activity-legend {
+    justify-content: flex-start;
+    gap: 12px;
+    font-size: 11px;
+  }
+
+  .legend-box.level-0,
+  .legend-box.streak-legend,
+  .legend-box.refilled-legend {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* ---------- WEEKLY CHART ---------- */
+
+  .daily-chart {
+    width: 100%;
+    min-width: 0;
+    height: 220px;
+    gap: 5px;
+    padding: 25px 4px 10px;
+  }
+
+  .chart-column {
+    min-width: 24px;
+  }
+
+  .chart-percent {
+    font-size: 10px;
+  }
+
+  .chart-label strong {
+    font-size: 11px;
+  }
+
+  .chart-label small {
+    font-size: 9px;
+  }
+
+  /* ---------- DONUT ---------- */
+
+  .donut-wrapper {
+    min-height: 220px;
+    gap: 14px;
+  }
+
+  .donut {
+    width: 140px;
+    height: 140px;
+  }
+
+  .donut-inner {
+    width: 104px;
+    height: 104px;
+  }
+
+  .donut-inner strong {
+    font-size: 25px;
+  }
+
+  .donut-legend {
+    flex-direction: column;
+    gap: 7px;
+    align-items: flex-start;
+  }
+
+  /* ---------- PROFILE ---------- */
+
+  .profile-page-section {
+    width: 100%;
+    padding: 5px 0 35px;
+  }
+
+  .profile-page-header {
+    padding: 20px;
+    gap: 15px;
+    border-radius: 17px;
+  }
+
+  .profile-large-avatar {
+    width: 62px;
+    height: 62px;
+    border-radius: 17px;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .profile-page-header h2 {
+    font-size: 21px;
+    overflow-wrap: anywhere;
+  }
+
+  .profile-page-header p:last-child {
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+
+  .profile-details-card {
+    grid-template-columns: 1fr !important;
+    gap: 11px;
+  }
+
+  .profile-detail {
+    padding: 17px;
+    border-radius: 15px;
+  }
+
+  .profile-detail strong {
+    font-size: 15px;
+    overflow-wrap: anywhere;
+  }
+
+  /* ---------- ACHIEVEMENTS ---------- */
+
+  .achievement-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+
+  .achievement-card {
+    min-width: 0;
+  }
+
+  /* ---------- HISTORY ---------- */
+
+  .history-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+
+  /* ---------- MODALS ---------- */
+
+  .modal-overlay {
+    padding: 14px;
+    align-items: center;
+  }
+
+  .edit-modal,
+  .delete-modal {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100vh - 28px);
+    overflow-y: auto;
+    padding: 20px;
+    border-radius: 17px;
+  }
+
+  .edit-modal-header {
+    margin-bottom: 18px;
+  }
+
+  .edit-modal-header h2 {
+    font-size: 21px;
+  }
+
+  .edit-modal-actions,
+  .delete-modal-actions {
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .cancel-edit-btn,
+  .save-edit-btn,
+  .delete-cancel-btn,
+  .delete-confirm-btn {
+    width: 100%;
+    min-height: 46px;
+  }
+
+  /* ---------- BUTTONS / TOUCH ---------- */
+
+  button,
+  input,
+  select {
+    min-height: 44px;
+  }
+
+  /* ---------- PREVENT OVERFLOW ---------- */
+
+  img,
+  svg,
+  canvas {
+    max-width: 100%;
+  }
+
+  .card,
+  .activity-card,
+  .task-card,
+  .stat-card,
+  .profile-detail {
+    overflow-wrap: anywhere;
+  }
+}
+
+
+/* =========================================
+   EXTRA SMALL PHONES
+   ========================================= */
+
+@media (max-width: 380px) {
+
+  .main {
+    width: calc(100% - 22px);
+  }
+
+  .header {
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .welcome h1 {
+    font-size: 27px;
+  }
+
+  .stat-card {
+    padding: 14px;
+  }
+
+  .activity-month {
+    min-width: 205px;
+    flex-basis: 205px;
+  }
+
+  .weekday-row,
+  .activity-calendar-grid {
+    grid-template-columns: repeat(7, 23px);
+    gap: 4px;
+  }
+
+  .activity-cell {
+    width: 23px;
+    height: 23px;
+  }
+}
+/* =========================================
+   STREAKUP - FINAL MOBILE HEADER
+   ========================================= */
+
+@media (max-width: 650px) {
+
+  /* ---------- MOBILE HEADER ---------- */
+
+  .header {
+    height: auto;
+    min-height: 72px;
+
+    padding: 10px 14px;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    gap: 8px 12px;
+  }
+
+  /* Logo stays on first row */
+  .logo {
+    order: 1;
+    flex: 0 0 auto;
+
+    font-size: 19px;
+    gap: 7px;
+  }
+
+  .logo-icon {
+    font-size: 22px;
+  }
+
+  /* Avatar + theme button */
+  .header-right {
+    order: 2;
+
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .theme-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+  }
+
+  .profile {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .profile > span {
+    display: none;
+  }
+
+  .profile .avatar {
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
+  }
+
+
+  /* ---------- MOBILE NAVIGATION ---------- */
+
+  nav {
+    order: 3;
+
+    display: flex !important;
+
+    flex: 0 0 100%;
+    width: 100%;
+
+    gap: 6px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding: 4px 0 6px;
+
+    scrollbar-width: none;
+
+    justify-content: flex-start;
+  }
+
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  nav a {
+    flex: 0 0 auto;
+
+    padding: 8px 12px;
+
+    font-size: 12px;
+
+    white-space: nowrap;
+
+    border-radius: 9px;
+  }
+
+  nav a.active::after {
+    bottom: -5px;
+  }
+
+
+  /* ---------- PROFILE DROPDOWN ---------- */
+
+  .profile-menu {
+    position: fixed;
+
+    top: 78px;
+    right: 12px;
+
+    width: min(280px, calc(100vw - 24px));
+
+    padding: 10px;
+
+    border-radius: 15px;
+
+    z-index: 9999;
+
+    box-sizing: border-box;
+  }
+
+  .profile-menu-header {
+    padding: 8px;
+    gap: 10px;
+  }
+
+  .profile-menu-avatar {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  .profile-menu-header strong {
+    font-size: 13px;
+  }
+
+  .profile-menu-header span {
+    max-width: 180px;
+    font-size: 11px;
+  }
+
+  .profile-menu-item {
+    min-height: 42px;
+
+    padding: 9px 10px;
+
+    font-size: 12px;
+  }
+
+
+  /* ---------- PAGE CONTENT ---------- */
+
+  .main {
+    width: calc(100% - 28px);
+    max-width: none;
+
+    padding-top: 28px;
+  }
+
+  .welcome h1 {
+    font-size: clamp(27px, 8vw, 36px);
+    line-height: 1.15;
+  }
+
+
+  /* ---------- STAT CARDS ---------- */
+
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+
+  .stat-card {
+    width: 100%;
+    min-width: 0;
+
+    min-height: 105px;
+
+    padding: 17px;
+
+    border-radius: 16px;
+  }
+
+
+  /* ---------- TASKS ---------- */
+
+  .task-card {
+    width: 100%;
+    min-width: 0;
+
+    padding: 15px;
+
+    gap: 10px;
+  }
+
+  .task-info {
+    min-width: 0;
+  }
+
+  .task-info h3 {
+    overflow-wrap: anywhere;
+  }
+
+
+  /* ---------- ACTIVITY ---------- */
+
+  .activity-card {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .activity-months-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+
+  /* ---------- PROFILE PAGE ---------- */
+
+  .profile-details-card {
+    grid-template-columns: 1fr !important;
+  }
+
+  .profile-page-header {
+    padding: 20px;
+  }
+}
+
+
+/* =========================================
+   EXTRA SMALL PHONES
+   ========================================= */
+
+@media (max-width: 380px) {
+
+  .header {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .logo-icon {
+    font-size: 21px;
+  }
+
+  .main {
+    width: calc(100% - 20px);
+  }
+
+  nav a {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .profile-menu {
+    right: 10px;
+    width: calc(100vw - 20px);
+  }
+}
+@media (max-width: 650px) {
+
+  /* Hide only the profile name beside the avatar */
+  .profile > span {
+    display: none;
+  }
+
+  /* Keep My Profile and Logout text visible */
+  .profile-menu .profile-menu-item span {
+    display: inline !important;
+  }
+
 }

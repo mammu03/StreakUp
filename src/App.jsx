@@ -1512,13 +1512,7 @@ function App() {
                     {month.days.map((day) => {
                       let level = 0;
 
-                      if (day.completedCount >= 10) {
-                        level = 4;
-                      } else if (day.completedCount >= 7) {
-                        level = 3;
-                      } else if (day.completedCount >= 4) {
-                        level = 2;
-                      } else if (day.completedCount >= 1) {
+                      if (day.completedCount >= 3) {
                         level = 1;
                       }
 
@@ -2175,45 +2169,198 @@ function App() {
 
         </section>
         <section className="profile-page-section">
-          <div className="profile-page-header">
-            <div className="profile-large-avatar">
-              {profileInitials}
-            </div>
 
-            <div>
-              <p className="section-label">YOUR PROFILE</p>
-              <h2>{profileName}</h2>
-              <p>{session?.user?.email}</p>
-            </div>
-          </div>
+  <div className="profile-page-header">
+    <div className="profile-large-avatar">
+      {profileInitials}
+    </div>
 
-          <div className="profile-details-card">
-            <div className="profile-detail">
-              <span>Full Name</span>
-              <strong>{profileName}</strong>
-            </div>
+    <div className="profile-header-info">
+      <p className="section-label">YOUR PROFILE</p>
+      <h2>{profileName}</h2>
+      <p>{session?.user?.email}</p>
+    </div>
+  </div>
 
-            <div className="profile-detail">
-              <span>Email</span>
-              <strong>{session?.user?.email}</strong>
-            </div>
 
-            <div className="profile-detail">
-              <span>Current Streak</span>
-              <strong>🔥 {currentStreak} days</strong>
-            </div>
+  <div className="profile-stats-grid">
 
-            <div className="profile-detail">
-              <span>Best Streak</span>
-              <strong>🏆 {bestStreak} days</strong>
-            </div>
+    <div className="profile-stat-card">
+      <span>🔥</span>
+      <p>Current Streak</p>
+      <strong>{currentStreak} days</strong>
+    </div>
 
-            <div className="profile-detail">
-              <span>Total XP</span>
-              <strong>⚡ {availableXP} XP</strong>
-            </div>
-          </div>
-        </section>
+    <div className="profile-stat-card">
+      <span>🏆</span>
+      <p>Best Streak</p>
+      <strong>{bestStreak} days</strong>
+    </div>
+
+    <div className="profile-stat-card">
+      <span>⚡</span>
+      <p>Available XP</p>
+      <strong>{availableXP} XP</strong>
+    </div>
+
+    <div className="profile-stat-card">
+      <span>✅</span>
+      <p>Completed Tasks</p>
+      <strong>
+        {tasks.filter((task) => task.completed).length}
+      </strong>
+    </div>
+
+    <div className="profile-stat-card">
+      <span>📅</span>
+      <p>Active Days</p>
+      <strong>{completedDates.length}</strong>
+    </div>
+
+    <div className="profile-stat-card">
+      <span>🎯</span>
+      <p>Today's Goal</p>
+      <strong>
+        {Math.min(
+          tasks.filter(
+            (task) =>
+              task.date === todayKey &&
+              task.completed
+          ).length,
+          DAILY_GOAL
+        )} / {DAILY_GOAL}
+      </strong>
+    </div>
+
+  </div>
+
+
+  <div className="profile-progress-card">
+
+    <div className="profile-card-heading">
+      <div>
+        <p className="section-label">PRODUCTIVITY</p>
+        <h3>Task Completion</h3>
+      </div>
+
+      <strong>
+        {tasks.length
+          ? Math.round(
+              (tasks.filter(
+                (task) => task.completed
+              ).length /
+                tasks.length) *
+                100
+            )
+          : 0}%
+      </strong>
+    </div>
+
+    <div className="profile-progress-track">
+      <div
+        className="profile-progress-fill"
+        style={{
+          width: `${
+            tasks.length
+              ? Math.round(
+                  (tasks.filter(
+                    (task) => task.completed
+                  ).length /
+                    tasks.length) *
+                    100
+                )
+              : 0
+          }%`,
+        }}
+      />
+    </div>
+
+  </div>
+
+
+  <div className="profile-progress-card">
+
+    <div className="profile-card-heading">
+      <div>
+        <p className="section-label">STREAK JOURNEY</p>
+        <h3>Achievement Progress</h3>
+      </div>
+    </div>
+
+    <div className="profile-milestone">
+
+      <div className="profile-milestone-info">
+        <span>🔥 3 Day Streak</span>
+        <strong>
+          {Math.min(bestStreak, 3)} / 3
+        </strong>
+      </div>
+
+      <div className="profile-progress-track">
+        <div
+          className="profile-progress-fill"
+          style={{
+            width: `${Math.min(
+              (bestStreak / 3) * 100,
+              100
+            )}%`,
+          }}
+        />
+      </div>
+
+    </div>
+
+
+    <div className="profile-milestone">
+
+      <div className="profile-milestone-info">
+        <span>⚡ 7 Day Streak</span>
+        <strong>
+          {Math.min(bestStreak, 7)} / 7
+        </strong>
+      </div>
+
+      <div className="profile-progress-track">
+        <div
+          className="profile-progress-fill"
+          style={{
+            width: `${Math.min(
+              (bestStreak / 7) * 100,
+              100
+            )}%`,
+          }}
+        />
+      </div>
+
+    </div>
+
+
+    <div className="profile-milestone">
+
+      <div className="profile-milestone-info">
+        <span>🏆 30 Day Streak</span>
+        <strong>
+          {Math.min(bestStreak, 30)} / 30
+        </strong>
+      </div>
+
+      <div className="profile-progress-track">
+        <div
+          className="profile-progress-fill"
+          style={{
+            width: `${Math.min(
+              (bestStreak / 30) * 100,
+              100
+            )}%`,
+          }}
+        />
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
         {editingTask && (
           <div className="modal-overlay">
             <div className="edit-modal">
